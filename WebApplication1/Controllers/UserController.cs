@@ -8,6 +8,7 @@ using PagedList;
 using WebApplication1.Models;
 //khanh
 //khanh1
+//ngan
 namespace WebApplication1.Controllers
 {
     public class UserController : Controller
