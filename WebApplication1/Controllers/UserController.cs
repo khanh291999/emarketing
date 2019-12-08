@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using WebApplication1.Models;
-
+//khanh
 namespace WebApplication1.Controllers
 {
     public class UserController : Controller
