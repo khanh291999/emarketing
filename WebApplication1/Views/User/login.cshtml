@@ -12,13 +12,40 @@
     }
 
     #main-div {
-        height: 900px;
+        /*height: 900px;
         background-image: url('../../Content/img/building2.jpg');
-        background-size: 100% 900px;
+        background-size: 100% 900px;*/
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        overflow:hidden;
     }
 
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-image: url("../../Content/img/sea.jpg");
+        background-size: cover;
+    }
+
+        .background .water {
+            position: absolute;
+            background-image: url("../../Content/img/sea-map.png");
+            background-size: cover;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            filter: url("#turbulence");
+        }
+
+
+
     .insidebox {
-        border: 1px solid black;
+        /*border: 1px solid black;*/
         margin: 10% auto 10% auto;
         max-width: 500px;
         min-width: 150px;
@@ -47,11 +74,28 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery.js"></script>
 <div id="main-div">
+
+    <div class="background">
+        <div class="water"></div>
+    </div>
+
+    <svg>
+        <filter id="turbulence" x="0" y="0" width="100%" height="100%">
+            <feTurbulence id="sea-filter" numOctaves="3" seed="2" baseFrequency="0.02 0.05"></feTurbulence>
+            <feDisplacementMap scale="20" in="SourceGraphic"></feDisplacementMap>
+            <animate xlink:href="#sea-filter" attributeName="baseFrequency" dur="60s"
+                     keyTimes="0;0.5;1" values="0.02 0.06;0.04 0.08;0.02 0.06" repeatCount="indefinite" />
+        </filter>
+    </svg>
+
+
     <div id="box" class="img-responsive">
         @using (@Html.BeginForm())
         {
-            <div class="insidebox">
-                <div> <h1 style="color:#d93636; font-family:Britannic">Log In as User</h1></div>
+        <div class="insidebox">
+            <div class="input-group" style="margin: 0 auto;margin-bottom:30px">
+                <div> <h1 style="color:#d93636; font-weight:bold;font-size:50px">Log In as User</h1></div>
+            </div>
 
 
 
@@ -80,9 +124,10 @@
 
 
                 <div class="form-group">
-                    @*<asp:Button ID="Button1" runat="server" Text="Log In" class="form-control  btn-success" OnClick="Button1_Click" OnClientClick="retrun(passwordmatchfunc())" />*@
-                    <input type="submit" value="Login" class="btn btn-danger btn-block" />
-
+                    <div class="input-group" style="margin: 0 auto;margin-top:40px">
+                        @*<asp:Button ID="Button1" runat="server" Text="Log In" class="form-control  btn-success" OnClick="Button1_Click" OnClientClick="retrun(passwordmatchfunc())" />*@
+                        <input type="submit" value="Login" class="btn btn-danger btn-block" />
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -93,8 +138,8 @@
 
             </div>
 
-        }
-    </div>
+            }
+        </div>
 
 </div>
 
