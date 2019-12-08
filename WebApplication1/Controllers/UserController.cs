@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PagedList;
 using WebApplication1.Models;
 //khanh
+//khanh1
 namespace WebApplication1.Controllers
 {
     public class UserController : Controller
