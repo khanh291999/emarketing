@@ -166,10 +166,6 @@ namespace WebApplication1.Controllers
             ad.u_image = u.u_image;
             ad.u_contact = u.u_contact;
             ad.pro_fk_user = u.u_id;
-
-
-
-
             return View(ad);
         }
 
