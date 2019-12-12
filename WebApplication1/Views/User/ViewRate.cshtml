@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.Models.Rateviewmodel>
+@{
+    ViewBag.Title = "ViewRate";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<style>
+    td {
+        padding: 20px;
+    }
+</style>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View Rate</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" style="height:1150px; width:60%; margin-top:2% ">
+
+
+        @if (Model != null)
+        {
+            <table class="table table-striped">
+
+                <tr>
+                    <th>Username</th>
+                    <th>Rate</th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.u_name</td>
+                            <td>@item.rate_content</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

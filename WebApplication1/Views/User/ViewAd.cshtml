@@ -63,8 +63,31 @@
                 </td>
 
             </tr>
-            <tr><td> @Html.ActionLink("Comment", "CreateComment", new { @class = "btn btn-info", id = Model.pro_id })</td></tr>
-            <tr><td> @Html.ActionLink("Rate", "CreateRate", new { @class = "btn btn-info", id = Model.pro_id })</td></tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("View Comment", "ViewComment", new { @class = "btn btn-info", id = Model.pro_id })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("View Rate", "ViewRate", new { @class = "btn btn-info", id = Model.pro_id })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   
+                        @Html.ActionLink("Comment", "CreateComment", new { @class = "btn btn-info", id = Model.pro_id })
+                    
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                  
+                        @Html.ActionLink("Rate", "CreateRate", new { @class = "btn btn-info", id = Model.pro_id })
+                    
+                </td>
+            </tr>
         </table>
 
 

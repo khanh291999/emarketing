@@ -145,8 +145,24 @@ namespace WebApplication1.Controllers
             db.tbl_comment.Add(p);
             db.SaveChanges();
             Response.Redirect("index");
+          
             return View();
         }
+
+
+        public ActionResult ViewComment()
+        {
+            List<tbl_comment> commentlist = db.tbl_comment.ToList();
+            Commentviewmodel commentVM = new Commentviewmodel();
+
+            List<Commentviewmodel> commentVMList = commentlist.Select(x => new Commentviewmodel
+            {
+                u_name = x.tbl_user.u_name,
+                comment_content = x.comment_content
+            }).ToList();
+            return View(commentVMList);
+        }
+
 
         [HttpGet]
         public ActionResult CreateRate()
@@ -169,7 +185,21 @@ namespace WebApplication1.Controllers
             db.tbl_rate.Add(p);
             db.SaveChanges();
             Response.Redirect("index");
+           
             return View();
+        }
+
+        public ActionResult ViewRate()
+        {
+            List<tbl_rate> ratelist = db.tbl_rate.ToList();
+            Rateviewmodel rateVM = new Rateviewmodel();
+
+            List<Rateviewmodel> rateVMList = ratelist.Select(x => new Rateviewmodel
+            {
+                u_name = x.tbl_user.u_name,
+                rate_content = x.rate_content
+            }).ToList();
+            return View(rateVMList);
         }
 
         public ActionResult Ads(int? id, int? page)
