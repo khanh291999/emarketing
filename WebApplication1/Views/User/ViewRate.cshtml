@@ -1,6 +1,6 @@
-﻿@model IEnumerable<WebApplication1.Models.Commentviewmodel>
+﻿@model IEnumerable<WebApplication1.Models.Rateviewmodel>
 @{
-    ViewBag.Title = "ViewComment";
+    ViewBag.Title = "ViewRate";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 <style>
@@ -14,7 +14,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>View Comment</title>
+    <title>View Rate</title>
     <link href="~/Content/paginition.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
@@ -29,14 +29,14 @@
 
                 <tr>
                     <th>Username</th>
-                    <th>Comment</th>
+                    <th>Rate</th>
                 </tr>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
                             <td>@item.u_name</td>
-                            <td>@item.comment_content</td>
+                            <td>@item.rate_content</td>
                         </tr>
                     }
                 </tbody>

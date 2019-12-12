@@ -65,24 +65,27 @@
             </tr>
             <tr>
                 <td>
-                    @Html.ActionLink("ViewComment", "ViewComment", new { @class = "btn btn-info", id = Model.pro_id })
+                    @Html.ActionLink("View Comment", "ViewComment", new { @class = "btn btn-info", id = Model.pro_id })
                 </td>
             </tr>
             <tr>
                 <td>
-                    @if (Convert.ToInt32(Session["u_id"]) == Convert.ToInt32(Model.pro_fk_user))
-                    {
+                    @Html.ActionLink("View Rate", "ViewRate", new { @class = "btn btn-info", id = Model.pro_id })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   
                         @Html.ActionLink("Comment", "CreateComment", new { @class = "btn btn-info", id = Model.pro_id })
-                    }
+                    
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    @if (Convert.ToInt32(Session["u_id"]) == Convert.ToInt32(Model.pro_fk_user))
-                    {
+                  
                         @Html.ActionLink("Rate", "CreateRate", new { @class = "btn btn-info", id = Model.pro_id })
-                    }
+                    
                 </td>
             </tr>
         </table>
