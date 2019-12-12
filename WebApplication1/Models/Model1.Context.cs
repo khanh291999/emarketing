@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbemarketingEntities1 : DbContext
+    public partial class dbemarketingEntities2 : DbContext
     {
-        public dbemarketingEntities1()
-            : base("name=dbemarketingEntities1")
+        public dbemarketingEntities2()
+            : base("name=dbemarketingEntities2")
         {
         }
     
@@ -28,7 +28,9 @@ namespace WebApplication1.Models
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<tbl_admin> tbl_admin { get; set; }
         public DbSet<tbl_category> tbl_category { get; set; }
+        public DbSet<tbl_comment> tbl_comment { get; set; }
         public DbSet<tbl_product> tbl_product { get; set; }
+        public DbSet<tbl_rate> tbl_rate { get; set; }
         public DbSet<tbl_user> tbl_user { get; set; }
     }
 }

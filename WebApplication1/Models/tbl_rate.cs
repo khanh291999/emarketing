@@ -12,24 +12,20 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_user
+    public partial class tbl_rate
     {
-        public tbl_user()
+        public tbl_rate()
         {
-            this.tbl_comment = new HashSet<tbl_comment>();
             this.tbl_product = new HashSet<tbl_product>();
-            this.tbl_rate = new HashSet<tbl_rate>();
         }
     
-        public int u_id { get; set; }
-        public string u_name { get; set; }
-        public string u_email { get; set; }
-        public string u_password { get; set; }
-        public string u_image { get; set; }
-        public string u_contact { get; set; }
+        public int rate_id { get; set; }
+        public string rate_content { get; set; }
+        public Nullable<int> rate_fk_pro { get; set; }
+        public Nullable<int> rate_fk_user { get; set; }
     
-        public virtual ICollection<tbl_comment> tbl_comment { get; set; }
         public virtual ICollection<tbl_product> tbl_product { get; set; }
-        public virtual ICollection<tbl_rate> tbl_rate { get; set; }
+        public virtual tbl_product tbl_product1 { get; set; }
+        public virtual tbl_user tbl_user { get; set; }
     }
 }

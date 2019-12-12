@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
 {
     public class UserController : Controller
     {
-        dbemarketingEntities1 db = new dbemarketingEntities1();
+        dbemarketingEntities2 db = new dbemarketingEntities2();
         // GET: User
         public ActionResult Index(int? page)
         {
@@ -124,6 +124,54 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CreateComment()
+        {
+            List<tbl_product> li = db.tbl_product.ToList();
+            ViewBag.categorylist = new SelectList(li, "pro_id", "pro_name");
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateComment(tbl_comment pvm)
+        {
+            List<tbl_product> li = db.tbl_product.ToList();
+            ViewBag.categorylist = new SelectList(li, "pro_id", "pro_name");
+            tbl_comment p = new tbl_comment();
+            p.comment_content = pvm.comment_content;
+            p.comment_fk_pro = pvm.comment_fk_pro;
+            p.comment_fk_user = Convert.ToInt32(Session["u_id"].ToString());
+            db.tbl_comment.Add(p);
+            db.SaveChanges();
+            Response.Redirect("index");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult CreateRate()
+        {
+            List<tbl_product> li = db.tbl_product.ToList();
+            ViewBag.categorylist = new SelectList(li, "pro_id", "pro_name");
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateRate(tbl_rate pvm)
+        {
+            List<tbl_product> li = db.tbl_product.ToList();
+            ViewBag.categorylist = new SelectList(li, "pro_id", "pro_name");
+            tbl_rate p = new tbl_rate();
+            p.rate_content = pvm.rate_content;
+            p.rate_fk_pro = pvm.rate_fk_pro;
+            p.rate_fk_user = Convert.ToInt32(Session["u_id"].ToString());
+            db.tbl_rate.Add(p);
+            db.SaveChanges();
+            Response.Redirect("index");
+            return View();
+        }
+
         public ActionResult Ads(int? id, int? page)
         {
             int pagesize = 9, pageindex = 1;
@@ -166,6 +214,10 @@ namespace WebApplication1.Controllers
             ad.u_image = u.u_image;
             ad.u_contact = u.u_contact;
             ad.pro_fk_user = u.u_id;
+            //tbl_comment com = db.tbl_comment.Where(x => x.comment_id == p.pro_fk_comment).SingleOrDefault();
+            //ad.comment_content = com.comment_content;
+            //tbl_rate ra = db.tbl_rate.Where(x => x.rate_id == p.pro_fk_rate).SingleOrDefault();
+            //ad.rate_content = ra.rate_content;
             return View(ad);
         }
 

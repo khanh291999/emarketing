@@ -163,7 +163,13 @@
     <Compile Include="Models\tbl_category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbl_comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbl_product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_rate.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_user.cs">
@@ -236,6 +242,8 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\User\Ads.cshtml" />
     <Content Include="Views\User\ViewAd.cshtml" />
+    <Content Include="Views\User\CreateComment.cshtml" />
+    <Content Include="Views\User\CreateRate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

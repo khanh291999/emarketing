@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
-        dbemarketingEntities1 db = new dbemarketingEntities1();
+        dbemarketingEntities2 db = new dbemarketingEntities2();
         [HttpGet]
         // GET: Admin
         public ActionResult login()
