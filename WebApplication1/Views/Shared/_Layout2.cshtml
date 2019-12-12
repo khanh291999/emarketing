@@ -21,34 +21,18 @@
                     <a class="navbar-brand" href="#">E-Marketing</a>
                 </div>*@
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "ht" })</li>
-                <li>@Html.ActionLink("Category", "Index", "User", null, new { @class = "ht" })</li>
-                <li>
-                    @if (Session["u_id"] != null)
-                    {
-                        @Html.ActionLink("Post An Ad", "CreateAd", "User", null, new { @class = "ht" })
-
-                    }
-                </li>
+                <li>@Html.ActionLink("Add Category", "Create", "Admin", null, new { @class = "ht" })</li>
+             
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @if (Session["u_id"] == null)
-                    {
-
-                        @Html.ActionLink("Sign In", "login", "User", null, new { @class = "ht", })
-
-                    }
-                </li>
               
+
                 <li>
-                    @if (Session["u_id"] == null)
+                    @if (Session["ad_id"] != null)
+                  
+                    
                     {
-                        @Html.ActionLink("Sign Up", "SignUp", "User", null, new { @class = "ht" })
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Sign Out", "Signout", "User", null, new { @class = "ht" })
+                        @Html.ActionLink("Sign Out", "Signout", "Admin", null, new { @class = "ht" })
                     }
 
                 <li>

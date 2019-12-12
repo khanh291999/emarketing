@@ -27,7 +27,7 @@ namespace WebApplication1.Controllers
             {
 
                 Session["ad_id"] = ad.ad_id.ToString();
-                return RedirectToAction("Create");
+                return RedirectToAction("ViewCategory");
 
             }
             else
@@ -84,7 +84,13 @@ namespace WebApplication1.Controllers
            
         }
 
+        public ActionResult Signout()
+        {
+            Session.RemoveAll();
+            Session.Abandon();
 
+            return RedirectToAction("Index", "Home");
+        }
 
 
         public string uploadimgfile(HttpPostedFileBase file)

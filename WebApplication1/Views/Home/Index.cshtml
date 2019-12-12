@@ -1,31 +1,146 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+    body {
+        overflow: hidden;
+    }
+    .slider {
+        min-height: 100vh;
+        background: lightblue;
+        width: 100%;
+        position: relative;
+        
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        .slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+            transition: 1.5s;
+        }
+
+    .buy-ticket {
+        position: absolute;
+        min-height: 20vh;
+        min-width: 20vw;
+        right: 10%;
+        top: 50%;
+        transform: translate(0, -50%);
+      
+    }
+    .button {
+        text-decoration: none;
+        color: white;
+        background-color: #e67e22;
+        padding: 30px 30px;
+        border-radius: 20px;
+        margin: 0 5px;
+        width: 280px;
+        display: inline-block;
+        text-align: center;
+        font-size: 25px;
+    }
+</style>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View  Category</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="slider">
+
+        <img class="slides"
+             src="../../Content/img/emarketing1.jpg"
+             alt="slider1" />
+        <img class="slides"
+             src="../../Content/img/emarketing2.jpg"
+             alt="slider2" />
+        <img class="slides"
+             src="../../Content/img/emarketing3.jpg"
+             alt="slider3" />
+        <img class="slides"
+             src="../../Content/img/emarketing4.jpg"
+             alt="slider4" />
+        <img class="slides"
+             src="../../Content/img/emarketing5.jpg"
+             alt="slider5" />
+        <div class="buy-ticket">
+            @if (Session["u_id"] == null)
+            {
+                <div class="button">
+
+
+                    @Html.ActionLink("Sign In", "login", "User", null, new { @class = "ht", })
+
+
+                </div>
+                <div class="button">
+
+                    @Html.ActionLink("Sign Up", "SignUp", "User", null, new { @class = "ht" })
+
+                </div>
+            }
+
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+</body>
+
+</html>
+
+<script>
+
+
+    //navbar screen animation
+    var slidesindex = 0;
+    var slides = document.getElementsByClassName("slides");
+
+    function appearslide() {
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.opacity = 0;
+        }
+        slides[slidesindex].style.opacity = 1;
+    }
+    appearslide();
+
+    function nextslide(number) {
+        if (slidesindex >= slides.length - 1) {
+            slidesindex = 0;
+        } else {
+            slidesindex++;
+        }
+        appearslide();
+    }
+
+    setInterval(nextslide, 4000);
+</script>
+
+
+
+
+
