@@ -148,6 +148,21 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+
+        public ActionResult ViewComment()
+        {
+            List<tbl_comment> commentlist = db.tbl_comment.ToList();
+            Commentviewmodel commentVM = new Commentviewmodel();
+
+            List<Commentviewmodel> commentVMList = commentlist.Select(x => new Commentviewmodel
+            {
+                u_name = x.tbl_user.u_name,
+                comment_content = x.comment_content
+            }).ToList();
+            return View(commentVMList);
+        }
+
+
         [HttpGet]
         public ActionResult CreateRate()
         {
