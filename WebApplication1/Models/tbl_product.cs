@@ -17,7 +17,7 @@ namespace WebApplication1.Models
         public tbl_product()
         {
             this.tbl_comment = new HashSet<tbl_comment>();
-            this.tbl_rate1 = new HashSet<tbl_rate>();
+            this.tbl_rate = new HashSet<tbl_rate>();
         }
     
         public int pro_id { get; set; }
@@ -26,15 +26,11 @@ namespace WebApplication1.Models
         public string pro_des { get; set; }
         public Nullable<int> pro_price { get; set; }
         public Nullable<int> pro_fk_cat { get; set; }
-        public Nullable<int> pro_fk_user { get; set; }
-        public Nullable<int> pro_fk_comment { get; set; }
-        public Nullable<int> pro_fk_rate { get; set; }
+        public Nullable<int> pro_fk_admin { get; set; }
     
+        public virtual tbl_admin tbl_admin { get; set; }
         public virtual tbl_category tbl_category { get; set; }
         public virtual ICollection<tbl_comment> tbl_comment { get; set; }
-        public virtual tbl_comment tbl_comment1 { get; set; }
-        public virtual tbl_user tbl_user { get; set; }
-        public virtual tbl_rate tbl_rate { get; set; }
-        public virtual ICollection<tbl_rate> tbl_rate1 { get; set; }
+        public virtual ICollection<tbl_rate> tbl_rate { get; set; }
     }
 }

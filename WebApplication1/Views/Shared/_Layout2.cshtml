@@ -21,16 +21,22 @@
                     <a class="navbar-brand" href="#">E-Marketing</a>
                 </div>*@
             <ul class="nav navbar-nav">
+
                 <li>@Html.ActionLink("Add Category", "Create", "Admin", null, new { @class = "ht" })</li>
-             
+                <li>
+
+                    @Html.ActionLink("Post An Ad", "CreateAd", "Admin", null, new { @class = "ht" })
+
+
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              
+
 
                 <li>
                     @if (Session["ad_id"] != null)
-                  
-                    
+
+
                     {
                         @Html.ActionLink("Sign Out", "Signout", "Admin", null, new { @class = "ht" })
                     }

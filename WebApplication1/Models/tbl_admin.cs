@@ -17,6 +17,7 @@ namespace WebApplication1.Models
         public tbl_admin()
         {
             this.tbl_category = new HashSet<tbl_category>();
+            this.tbl_product = new HashSet<tbl_product>();
         }
     
         public int ad_id { get; set; }
@@ -24,5 +25,6 @@ namespace WebApplication1.Models
         public string ad_password { get; set; }
     
         public virtual ICollection<tbl_category> tbl_category { get; set; }
+        public virtual ICollection<tbl_product> tbl_product { get; set; }
     }
 }

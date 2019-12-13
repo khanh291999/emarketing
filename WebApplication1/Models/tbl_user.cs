@@ -17,7 +17,6 @@ namespace WebApplication1.Models
         public tbl_user()
         {
             this.tbl_comment = new HashSet<tbl_comment>();
-            this.tbl_product = new HashSet<tbl_product>();
             this.tbl_rate = new HashSet<tbl_rate>();
         }
     
@@ -29,7 +28,6 @@ namespace WebApplication1.Models
         public string u_contact { get; set; }
     
         public virtual ICollection<tbl_comment> tbl_comment { get; set; }
-        public virtual ICollection<tbl_product> tbl_product { get; set; }
         public virtual ICollection<tbl_rate> tbl_rate { get; set; }
     }
 }

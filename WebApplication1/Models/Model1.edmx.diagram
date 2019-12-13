@@ -4,21 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2cf0f440cc0c41048f317ac5a4b34885" Name="Diagram1">
-        <EntityTypeShape EntityType="dbemarketingModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_admin" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_category" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_comment" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_rate" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbemarketingModel.tbl_user" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+      <Diagram DiagramId="7e70cf3025874d84bbe7ed2027a62ed2" Name="Diagram1">
+        <EntityTypeShape EntityType="dbemarketingModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_admin" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_category" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_comment" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_product" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_rate" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbemarketingModel.tbl_user" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_categ__cat_f__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="dbemarketingModel.FK_tbl_product_tbl_admin" ManuallyRouted="false" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_produ__pro_f__1BFD2C07" ManuallyRouted="false" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_comme__comme__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_comme__comme__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="dbemarketingModel.FK__tbl_produ__pro_f__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="dbemarketingModel.FK__tbl_produ__pro_f__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="dbemarketingModel.FK__tbl_produ__pro_f__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_rate__rate_f__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="dbemarketingModel.FK__tbl_rate__rate_f__2F10007B" ManuallyRouted="false" />
       </Diagram>

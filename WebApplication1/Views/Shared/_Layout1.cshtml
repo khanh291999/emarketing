@@ -3,6 +3,7 @@
 <html>
 <head>
     <style>
+
         .na {
             text-decoration: none;
             color: white;
@@ -10,7 +11,6 @@
     </style>
     <title>@Page.Title</title>
     @RenderSection("head", required: false)
-
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -23,13 +23,7 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "ht" })</li>
                 <li>@Html.ActionLink("Category", "Index", "User", null, new { @class = "ht" })</li>
-                <li>
-                    @if (Session["u_id"] != null)
-                    {
-                        @Html.ActionLink("Post An Ad", "CreateAd", "User", null, new { @class = "ht" })
 
-                    }
-                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -40,7 +34,7 @@
 
                     }
                 </li>
-              
+
                 <li>
                     @if (Session["u_id"] == null)
                     {
@@ -50,7 +44,6 @@
                     {
                         @Html.ActionLink("Sign Out", "Signout", "User", null, new { @class = "ht" })
                     }
-
                 <li>
             </ul>
         </div>
@@ -65,7 +58,6 @@
                 </div>
             }*@
     </nav>
-
     @RenderBody()
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>

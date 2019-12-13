@@ -14,18 +14,12 @@ namespace WebApplication1.Models
     
     public partial class tbl_rate
     {
-        public tbl_rate()
-        {
-            this.tbl_product = new HashSet<tbl_product>();
-        }
-    
         public int rate_id { get; set; }
         public string rate_content { get; set; }
         public Nullable<int> rate_fk_pro { get; set; }
         public Nullable<int> rate_fk_user { get; set; }
     
-        public virtual ICollection<tbl_product> tbl_product { get; set; }
-        public virtual tbl_product tbl_product1 { get; set; }
+        public virtual tbl_product tbl_product { get; set; }
         public virtual tbl_user tbl_user { get; set; }
     }
 }

@@ -52,9 +52,7 @@
           <Property Name="pro_des" Type="nvarchar(max)" Nullable="false" />
           <Property Name="pro_price" Type="int" />
           <Property Name="pro_fk_cat" Type="int" />
-          <Property Name="pro_fk_user" Type="int" />
-          <Property Name="pro_fk_comment" Type="int" />
-          <Property Name="pro_fk_rate" Type="int" />
+          <Property Name="pro_fk_admin" Type="int" />
         </EntityType>
         <EntityType Name="tbl_rate">
           <Key>
@@ -124,42 +122,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_produ__pro_f__1CF15040">
-          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_user">
-              <PropertyRef Name="u_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_produ__pro_f__300424B4">
-          <End Role="tbl_comment" Type="Self.tbl_comment" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_comment">
-              <PropertyRef Name="comment_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_comment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_produ__pro_f__30F848ED">
-          <End Role="tbl_rate" Type="Self.tbl_rate" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_rate">
-              <PropertyRef Name="rate_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_rate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tbl_rate__rate_f__2E1BDC42">
           <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="0..1" />
           <End Role="tbl_rate" Type="Self.tbl_rate" Multiplicity="*" />
@@ -181,6 +143,18 @@
             </Principal>
             <Dependent Role="tbl_rate">
               <PropertyRef Name="rate_fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_product_tbl_admin">
+          <End Role="tbl_admin" Type="Self.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_admin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -208,18 +182,6 @@
             <End Role="tbl_category" EntitySet="tbl_category" />
             <End Role="tbl_product" EntitySet="tbl_product" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__1CF15040" Association="Self.FK__tbl_produ__pro_f__1CF15040">
-            <End Role="tbl_user" EntitySet="tbl_user" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__300424B4" Association="Self.FK__tbl_produ__pro_f__300424B4">
-            <End Role="tbl_comment" EntitySet="tbl_comment" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__30F848ED" Association="Self.FK__tbl_produ__pro_f__30F848ED">
-            <End Role="tbl_rate" EntitySet="tbl_rate" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
-          </AssociationSet>
           <AssociationSet Name="FK__tbl_rate__rate_f__2E1BDC42" Association="Self.FK__tbl_rate__rate_f__2E1BDC42">
             <End Role="tbl_product" EntitySet="tbl_product" />
             <End Role="tbl_rate" EntitySet="tbl_rate" />
@@ -227,6 +189,10 @@
           <AssociationSet Name="FK__tbl_rate__rate_f__2F10007B" Association="Self.FK__tbl_rate__rate_f__2F10007B">
             <End Role="tbl_user" EntitySet="tbl_user" />
             <End Role="tbl_rate" EntitySet="tbl_rate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_product_tbl_admin" Association="Self.FK_tbl_product_tbl_admin">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -252,6 +218,7 @@
           <Property Name="ad_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ad_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_categ__cat_f__1B0907CE" FromRole="tbl_admin" ToRole="tbl_category" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.FK_tbl_product_tbl_admin" FromRole="tbl_admin" ToRole="tbl_product" />
         </EntityType>
         <EntityType Name="tbl_category">
           <Key>
@@ -275,7 +242,6 @@
           <Property Name="comment_fk_user" Type="Int32" />
           <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_comme__comme__2A4B4B5E" FromRole="tbl_comment" ToRole="tbl_product" />
           <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_comme__comme__2B3F6F97" FromRole="tbl_comment" ToRole="tbl_user" />
-          <NavigationProperty Name="tbl_product1" Relationship="Self.FK__tbl_produ__pro_f__300424B4" FromRole="tbl_comment" ToRole="tbl_product" />
         </EntityType>
         <EntityType Name="tbl_product">
           <Key>
@@ -287,15 +253,11 @@
           <Property Name="pro_des" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="pro_price" Type="Int32" />
           <Property Name="pro_fk_cat" Type="Int32" />
-          <Property Name="pro_fk_user" Type="Int32" />
-          <Property Name="pro_fk_comment" Type="Int32" />
-          <Property Name="pro_fk_rate" Type="Int32" />
+          <Property Name="pro_fk_admin" Type="Int32" />
+          <NavigationProperty Name="tbl_admin" Relationship="Self.FK_tbl_product_tbl_admin" FromRole="tbl_product" ToRole="tbl_admin" />
           <NavigationProperty Name="tbl_category" Relationship="Self.FK__tbl_produ__pro_f__1BFD2C07" FromRole="tbl_product" ToRole="tbl_category" />
           <NavigationProperty Name="tbl_comment" Relationship="Self.FK__tbl_comme__comme__2A4B4B5E" FromRole="tbl_product" ToRole="tbl_comment" />
-          <NavigationProperty Name="tbl_comment1" Relationship="Self.FK__tbl_produ__pro_f__300424B4" FromRole="tbl_product" ToRole="tbl_comment" />
-          <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_produ__pro_f__1CF15040" FromRole="tbl_product" ToRole="tbl_user" />
-          <NavigationProperty Name="tbl_rate" Relationship="Self.FK__tbl_produ__pro_f__30F848ED" FromRole="tbl_product" ToRole="tbl_rate" />
-          <NavigationProperty Name="tbl_rate1" Relationship="Self.FK__tbl_rate__rate_f__2E1BDC42" FromRole="tbl_product" ToRole="tbl_rate" />
+          <NavigationProperty Name="tbl_rate" Relationship="Self.FK__tbl_rate__rate_f__2E1BDC42" FromRole="tbl_product" ToRole="tbl_rate" />
         </EntityType>
         <EntityType Name="tbl_rate">
           <Key>
@@ -305,8 +267,7 @@
           <Property Name="rate_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="rate_fk_pro" Type="Int32" />
           <Property Name="rate_fk_user" Type="Int32" />
-          <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_produ__pro_f__30F848ED" FromRole="tbl_rate" ToRole="tbl_product" />
-          <NavigationProperty Name="tbl_product1" Relationship="Self.FK__tbl_rate__rate_f__2E1BDC42" FromRole="tbl_rate" ToRole="tbl_product" />
+          <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_rate__rate_f__2E1BDC42" FromRole="tbl_rate" ToRole="tbl_product" />
           <NavigationProperty Name="tbl_user" Relationship="Self.FK__tbl_rate__rate_f__2F10007B" FromRole="tbl_rate" ToRole="tbl_user" />
         </EntityType>
         <EntityType Name="tbl_user">
@@ -320,7 +281,6 @@
           <Property Name="u_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="u_contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tbl_comment" Relationship="Self.FK__tbl_comme__comme__2B3F6F97" FromRole="tbl_user" ToRole="tbl_comment" />
-          <NavigationProperty Name="tbl_product" Relationship="Self.FK__tbl_produ__pro_f__1CF15040" FromRole="tbl_user" ToRole="tbl_product" />
           <NavigationProperty Name="tbl_rate" Relationship="Self.FK__tbl_rate__rate_f__2F10007B" FromRole="tbl_user" ToRole="tbl_rate" />
         </EntityType>
         <Association Name="FK__tbl_categ__cat_f__1B0907CE">
@@ -332,6 +292,18 @@
             </Principal>
             <Dependent Role="tbl_category">
               <PropertyRef Name="cat_fk_ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_product_tbl_admin">
+          <End Role="tbl_admin" Type="Self.tbl_admin" Multiplicity="0..1" />
+          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_admin">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="tbl_product">
+              <PropertyRef Name="pro_fk_admin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -371,42 +343,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_produ__pro_f__300424B4">
-          <End Role="tbl_comment" Type="Self.tbl_comment" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_comment">
-              <PropertyRef Name="comment_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_comment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_produ__pro_f__1CF15040">
-          <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_user">
-              <PropertyRef Name="u_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__tbl_produ__pro_f__30F848ED">
-          <End Role="tbl_rate" Type="Self.tbl_rate" Multiplicity="0..1" />
-          <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_rate">
-              <PropertyRef Name="rate_id" />
-            </Principal>
-            <Dependent Role="tbl_product">
-              <PropertyRef Name="pro_fk_rate" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__tbl_rate__rate_f__2E1BDC42">
           <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="0..1" />
           <End Role="tbl_rate" Type="Self.tbl_rate" Multiplicity="*" />
@@ -431,7 +367,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbemarketingEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbemarketingEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" />
           <EntitySet Name="tbl_category" EntityType="Self.tbl_category" />
@@ -442,6 +378,10 @@
           <AssociationSet Name="FK__tbl_categ__cat_f__1B0907CE" Association="Self.FK__tbl_categ__cat_f__1B0907CE">
             <End Role="tbl_admin" EntitySet="tbl_admin" />
             <End Role="tbl_category" EntitySet="tbl_category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_product_tbl_admin" Association="Self.FK_tbl_product_tbl_admin">
+            <End Role="tbl_admin" EntitySet="tbl_admin" />
+            <End Role="tbl_product" EntitySet="tbl_product" />
           </AssociationSet>
           <AssociationSet Name="FK__tbl_produ__pro_f__1BFD2C07" Association="Self.FK__tbl_produ__pro_f__1BFD2C07">
             <End Role="tbl_category" EntitySet="tbl_category" />
@@ -454,18 +394,6 @@
           <AssociationSet Name="FK__tbl_comme__comme__2B3F6F97" Association="Self.FK__tbl_comme__comme__2B3F6F97">
             <End Role="tbl_user" EntitySet="tbl_user" />
             <End Role="tbl_comment" EntitySet="tbl_comment" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__300424B4" Association="Self.FK__tbl_produ__pro_f__300424B4">
-            <End Role="tbl_comment" EntitySet="tbl_comment" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__1CF15040" Association="Self.FK__tbl_produ__pro_f__1CF15040">
-            <End Role="tbl_user" EntitySet="tbl_user" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__tbl_produ__pro_f__30F848ED" Association="Self.FK__tbl_produ__pro_f__30F848ED">
-            <End Role="tbl_rate" EntitySet="tbl_rate" />
-            <End Role="tbl_product" EntitySet="tbl_product" />
           </AssociationSet>
           <AssociationSet Name="FK__tbl_rate__rate_f__2E1BDC42" Association="Self.FK__tbl_rate__rate_f__2E1BDC42">
             <End Role="tbl_product" EntitySet="tbl_product" />
@@ -481,7 +409,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbemarketingModelStoreContainer" CdmEntityContainer="dbemarketingEntities2">
+        <EntityContainerMapping StorageEntityContainer="dbemarketingModelStoreContainer" CdmEntityContainer="dbemarketingEntities3">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="dbemarketingModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -532,9 +460,7 @@
                 <ScalarProperty Name="pro_des" ColumnName="pro_des" />
                 <ScalarProperty Name="pro_price" ColumnName="pro_price" />
                 <ScalarProperty Name="pro_fk_cat" ColumnName="pro_fk_cat" />
-                <ScalarProperty Name="pro_fk_user" ColumnName="pro_fk_user" />
-                <ScalarProperty Name="pro_fk_comment" ColumnName="pro_fk_comment" />
-                <ScalarProperty Name="pro_fk_rate" ColumnName="pro_fk_rate" />
+                <ScalarProperty Name="pro_fk_admin" ColumnName="pro_fk_admin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

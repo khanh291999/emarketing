@@ -13,10 +13,10 @@ namespace WebApplication1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbemarketingEntities2 : DbContext
+    public partial class dbemarketingEntities3 : DbContext
     {
-        public dbemarketingEntities2()
-            : base("name=dbemarketingEntities2")
+        public dbemarketingEntities3()
+            : base("name=dbemarketingEntities3")
         {
         }
     

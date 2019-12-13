@@ -14,11 +14,6 @@ namespace WebApplication1.Models
     
     public partial class tbl_comment
     {
-        public tbl_comment()
-        {
-            this.tbl_product1 = new HashSet<tbl_product>();
-        }
-    
         public int comment_id { get; set; }
         public string comment_content { get; set; }
         public Nullable<int> comment_fk_pro { get; set; }
@@ -26,6 +21,5 @@ namespace WebApplication1.Models
     
         public virtual tbl_product tbl_product { get; set; }
         public virtual tbl_user tbl_user { get; set; }
-        public virtual ICollection<tbl_product> tbl_product1 { get; set; }
     }
 }

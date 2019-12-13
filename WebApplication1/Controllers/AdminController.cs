@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
 {
     public class AdminController : Controller
     {
-        dbemarketingEntities2 db = new dbemarketingEntities2();
+        dbemarketingEntities3 db = new dbemarketingEntities3();
         [HttpGet]
         // GET: Admin
         public ActionResult login()
@@ -69,6 +69,45 @@ namespace WebApplication1.Controllers
 
             return View();
         } //end,,,,,,,,,,,,,,,,,,,
+
+        [HttpGet]
+        public ActionResult CreateAd()
+        {
+            List<tbl_category> li = db.tbl_category.ToList();
+            ViewBag.categorylist = new SelectList(li, "cat_id", "cat_name");
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAd(tbl_product pvm, HttpPostedFileBase imgfile)
+        {
+            List<tbl_category> li = db.tbl_category.ToList();
+            ViewBag.categorylist = new SelectList(li, "cat_id", "cat_name");
+
+
+            string path = uploadimgfile(imgfile);
+            if (path.Equals("-1"))
+            {
+                ViewBag.error = "Image could not be uploaded....";
+            }
+            else
+            {
+                tbl_product p = new tbl_product();
+                p.pro_name = pvm.pro_name;
+                p.pro_price = pvm.pro_price;
+                p.pro_image = path;
+                p.pro_fk_cat = pvm.pro_fk_cat;
+                p.pro_des = pvm.pro_des;
+                p.pro_fk_admin = Convert.ToInt32(Session["ad_id"].ToString());
+                db.tbl_product.Add(p);
+                db.SaveChanges();
+                Response.Redirect("ViewCategory");
+
+            }
+
+            return View();
+        }
 
         public ActionResult ViewCategory(int? page)
         {
