@@ -123,6 +123,16 @@ namespace WebApplication1.Controllers
            
         }
 
+        public ActionResult DeleteCategory(int? id)
+        {
+
+            tbl_category p = db.tbl_category.Where(x => x.cat_id == id).SingleOrDefault();
+            db.tbl_category.Remove(p);
+            db.SaveChanges();
+
+            return RedirectToAction("ViewCategory");
+        }
+
         public ActionResult Signout()
         {
             Session.RemoveAll();

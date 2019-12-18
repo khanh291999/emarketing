@@ -238,7 +238,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
     <Content Include="Views\User\login.cshtml" />
-    <Content Include="Views\User\CreateAd.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\User\Ads.cshtml" />
     <Content Include="Views\User\ViewAd.cshtml" />
