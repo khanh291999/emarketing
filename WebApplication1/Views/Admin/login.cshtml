@@ -11,14 +11,15 @@
     }
 
     #main-div {
-        height: 900px;
-        background-image: url('../../Content/img/building6.jpg');
-        background-size: 100% 900px;
+        height: 100vh;
+        width: 100vw;
+        background-image: linear-gradient(345deg, rgba(96, 56, 19, 0.8) 55%, rgba(178, 159, 148, 0.85)),url('../../Content/img/backgroundadmin.jpg');
     }
 
     .insidebox {
         border: 1px solid black;
-        margin: 10% auto 10% auto;
+        margin: 19% auto 10% auto;
+
         max-width: 500px;
         min-width: 200px;
         padding-left: 60px;
@@ -69,7 +70,7 @@
                     <div class="input-group">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                         @*<asp:TextBox ID="txtpassword" runat="server" class="form-control" placeholder="Password" TextMode="Password" required="required"></asp:TextBox>*@
-                        @Html.PasswordFor(x => x.ad_password, new { @class = "form-control", @placeholder = "Username" })
+                        @Html.PasswordFor(x => x.ad_password, new { @class = "form-control", @placeholder = "Password" })
 
                     </div>
                     <span style="color:red">   @Html.ValidationMessageFor(x => x.ad_password) </span>

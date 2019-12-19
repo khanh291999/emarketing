@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.tbl_user
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DetailUser</title>
+</head>
+<body>
+    <div>
+        <h4>tbl_user</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.u_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_password)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_password)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_image)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_image)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_contact)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_contact)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.u_fk_admin)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.u_fk_admin)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
