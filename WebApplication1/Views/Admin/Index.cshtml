@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.tbl_user>
+
+<h1>User List</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.u_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.u_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.u_password)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.u_contact)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.u_password)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.u_contact)
+            </td>
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.u_id })
+            </td>
+        </tr>
+    }
+
+</table>

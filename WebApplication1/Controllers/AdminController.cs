@@ -38,6 +38,37 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+        //show list User
+        public ActionResult Index()
+        {
+            return View(db.tbl_user.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            return View(db.tbl_user.Where(x => x.u_id == id).FirstOrDefault());
+        }
+       //delete user
+        [HttpPost]
+        public ActionResult Delete(int id, tbl_user u)
+        {
+            try
+            {
+                u = db.tbl_user.Where(x => x.u_id == id).FirstOrDefault();
+                db.tbl_user.Remove(u);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+
         public ActionResult Create()
         {
             if (Session["ad_id"] == null)
@@ -170,7 +201,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("ViewCategory");
         }
 
-
+     
 
         public ActionResult ViewCategory(int? page)
         {
@@ -195,6 +226,8 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("ViewCategory");
         }
+
+
 
         public ActionResult Signout()
         {
