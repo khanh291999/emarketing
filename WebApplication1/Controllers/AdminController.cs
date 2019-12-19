@@ -109,6 +109,69 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult Ads(int? id, int? page)
+        {
+            int pagesize = 9, pageindex = 1;
+            pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+            var list = db.tbl_product.Where(x => x.pro_fk_cat == id).OrderByDescending(x => x.pro_id).ToList();
+            IPagedList<tbl_product> stu = list.ToPagedList(pageindex, pagesize);
+
+
+            return View(stu);
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Ads(int? id, int? page, string search)
+        {
+            int pagesize = 9, pageindex = 1;
+            pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
+            var list = db.tbl_product.Where(x => x.pro_name.Contains(search)).OrderByDescending(x => x.pro_id).ToList();
+            IPagedList<tbl_product> stu = list.ToPagedList(pageindex, pagesize);
+
+
+            return View(stu);
+
+
+        }
+
+        public ActionResult ViewAd(int? id)
+        {
+            Adviewmodel ad = new Adviewmodel();
+            tbl_product p = db.tbl_product.Where(x => x.pro_id == id).SingleOrDefault();
+            ad.pro_id = p.pro_id;
+            ad.pro_name = p.pro_name;
+            ad.pro_image = p.pro_image;
+            ad.pro_price = p.pro_price;
+            ad.pro_des = p.pro_des;
+            tbl_category cat = db.tbl_category.Where(x => x.cat_id == p.pro_fk_cat).SingleOrDefault();
+            ad.cat_name = cat.cat_name;
+            tbl_admin u = db.tbl_admin.Where(x => x.ad_id == p.pro_fk_admin).SingleOrDefault();
+            ad.ad_id = u.ad_id;
+            ad.ad_username = u.ad_username;
+          
+            //tbl_comment com = db.tbl_comment.Where(x => x.comment_id == p.pro_fk_comment).SingleOrDefault();
+            //ad.comment_content = com.comment_content;
+            //tbl_rate ra = db.tbl_rate.Where(x => x.rate_id == p.pro_fk_rate).SingleOrDefault();
+            //ad.rate_content = ra.rate_content;
+            return View(ad);
+        }
+
+
+        public ActionResult DeleteAd(int? id)
+        {
+
+            tbl_product p = db.tbl_product.Where(x => x.pro_id == id).SingleOrDefault();
+            db.tbl_product.Remove(p);
+            db.SaveChanges();
+
+            return RedirectToAction("ViewCategory");
+        }
+
+
+
         public ActionResult ViewCategory(int? page)
         {
             int pagesize = 9, pageindex = 1;

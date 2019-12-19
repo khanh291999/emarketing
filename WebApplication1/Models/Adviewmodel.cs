@@ -14,9 +14,10 @@ namespace WebApplication1.Models
         public Nullable<int> pro_price { get; set; }
 
         public Nullable<int> pro_fk_cat { get; set; }
-        public Nullable<int> pro_fk_user { get; set; }
+        //public Nullable<int> pro_fk_user { get; set; }
         public Nullable<int> pro_fk_comment { get; set; }
         public Nullable<int> pro_fk_rate { get; set; }
+        public Nullable<int> pro_fk_admin { get; set; }
 
         public int cat_id { get; set; }
         public string cat_name { get; set; }
@@ -33,6 +34,10 @@ namespace WebApplication1.Models
         public string rate_content { get; set; }
         public Nullable<int> rate_fk_pro { get; set; }
         public Nullable<int> rate_fk_user { get; set; }
+
+
+        public int ad_id { get; set; }
+        public string ad_username { get; set; }
 
 
     }

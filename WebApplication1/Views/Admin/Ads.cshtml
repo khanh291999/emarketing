@@ -25,6 +25,7 @@
         background-image: url('../../Content/img/nen2.jpg');
         background-size: 100% 900px;
     }
+
     .row1 {
         width: 1250px;
         margin: 0 auto;
@@ -45,27 +46,27 @@
 <body>
     <div style="height:1150px; ">
         @*<div class="row">
-            <div class="col-lg-12" style="height:100px; border:1px solid solid; ">
+                <div class="col-lg-12" style="height:100px; border:1px solid solid; ">
 
 
-                <img src="~/Content/img/Modern-e-Commerce-Web-Design-Trends.-Part-2.gif" style="width:100%; height:100%" />
+                    <img src="~/Content/img/Modern-e-Commerce-Web-Design-Trends.-Part-2.gif" style="width:100%; height:100%" />
 
 
-            </div>
+                </div>
 
-        </div>*@
+            </div>*@
 
 
 
         <div class="row1" style="margin-bottom:40px">
 
             @*<div class="col-lg-2 col-md-2">
-                <img src="~/Content/img/150_sleep1_600.gif" class="img img-responsive" style="width:100%; height:100%" />
-            </div>*@
+                    <img src="~/Content/img/150_sleep1_600.gif" class="img img-responsive" style="width:100%; height:100%" />
+                </div>*@
 
             <div class="col-lg-8 col-md-8">
 
-                 @using (@Html.BeginForm("Ads", "User"))
+                @using (@Html.BeginForm("Ads", "Admin"))
                 {
                     <div class="navbar-form ">
                         <div class="form-group">
@@ -84,7 +85,7 @@
                     {
                         foreach (var item in Model)
                         {
-                            x++;
+                           
                             <div class="col-lg-4 col-md-4" style="height:200px;margin-top:100px">
 
                                 <img class="img img-responsive cimg" src="@Url.Content(item.pro_image)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
@@ -101,8 +102,8 @@
 
 
             @*<div class="col-lg-2 col-md-2">
-                <img src="~/Content/img/LOB_val_600.gif" class="img img-responsive" style="width:100%; height:100%" />
-            </div>*@
+                    <img src="~/Content/img/LOB_val_600.gif" class="img img-responsive" style="width:100%; height:100%" />
+                </div>*@
 
 
 
