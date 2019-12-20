@@ -1,46 +1,69 @@
 ﻿@model IEnumerable<WebApplication1.Models.tbl_user>
-
-<h1>User List</h1>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.u_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.u_password)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.u_contact)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.u_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.u_email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.u_password)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.u_contact)
-            </td>
-            <td>
-
-                @Html.ActionLink("Delete", "Delete", new { id = item.u_id })
-            </td>
-        </tr>
+@{
+    ViewBag.Title = "ViewCategory";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<style>
+    .container h1 {
+        text-align: center;
+        color: red;
+        margin: 20px 0px;
     }
 
-</table>
+    #name {
+        color: #3498db;
+        font-weight:bold;
+        text-transform:uppercase;
+    }
+
+    #name:hover{
+        text-decoration:underline;
+    }
+</style>
+
+<div class="container">
+    <h1>User List</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.u_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.u_password)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.u_contact)
+            </th>
+            <th>Action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td id="name">
+                    @Html.DisplayFor(modelItem => item.u_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_password)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.u_contact)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.u_id })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>

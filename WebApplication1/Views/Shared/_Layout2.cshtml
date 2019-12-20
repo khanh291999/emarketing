@@ -21,11 +21,11 @@
                     <a class="navbar-brand" href="#">E-Marketing</a>
                 </div>*@
             <ul class="nav navbar-nav">
-
+                <li>@Html.ActionLink("Category", "ViewCategory", "Admin", null, new { @class = "ht" })</li>
                 <li>@Html.ActionLink("Add Category", "Create", "Admin", null, new { @class = "ht" })</li>
                 <li>
 
-                    @Html.ActionLink("Post An Ad", "CreateAd", "Admin", null, new { @class = "ht" })
+                    @Html.ActionLink("Post A Product", "CreateAd", "Admin", null, new { @class = "ht" })
 
 
                 </li>
