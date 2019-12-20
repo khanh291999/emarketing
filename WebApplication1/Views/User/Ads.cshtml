@@ -29,6 +29,15 @@
         width: 1250px;
         margin: 0 auto;
     }
+
+    .logo {
+        transition: all 0.5s;
+    }
+
+        .logo:hover,
+        .logo:active {
+            transform: scale(0.8);
+        }
 </style>
 
 
@@ -87,7 +96,7 @@
                             x++;
                             <div class="col-lg-4 col-md-4" style="height:200px;margin-top:100px">
 
-                                <img class="img img-responsive cimg" src="@Url.Content(item.pro_image)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
+                                <img class="img img-responsive cimg logo" src="@Url.Content(item.pro_image)" style=" height:100%;width:100% ;border-radius:50px 50px 50px 50px" />
                                 <h4 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> @Html.ActionLink(@item.pro_name, "ViewAd", new { id = @item.pro_id })</h4>
 
                             </div>

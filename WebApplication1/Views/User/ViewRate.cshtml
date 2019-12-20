@@ -7,6 +7,24 @@
     td {
         padding: 20px;
     }
+    #name {
+        color: #3498db;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+        #name:hover {
+            text-decoration: underline;
+        }
+    .center {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .center h1 {
+            font-weight: bold;
+            color: red
+        }
 </style>
 
 
@@ -22,7 +40,7 @@
 <body>
     <div class="container" style="height:1150px; width:60%; margin-top:2% ">
 
-
+        <div class="center"><h1>Rating</h1></div>
         @if (Model != null)
         {
             <table class="table table-striped">
@@ -35,7 +53,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.u_name</td>
+                            <td id="name">@item.u_name</td>
                             <td>@item.rate_content</td>
                         </tr>
                     }
